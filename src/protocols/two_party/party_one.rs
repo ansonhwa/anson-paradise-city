@@ -40,18 +40,18 @@ use protocols::two_party::verify;
 use protocols::two_party::Signature;
 
 const SECURITY_BITS: usize = 256;
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[cfg_attr(feature = "std", derive(Clone, Debug, serde::Serialize, serde::Deserialize))]
 pub struct KeyGenFirstMsg {
     pub pk_commitment: BigInt,
     pub zk_pok_commitment: BigInt,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[cfg_attr(feature = "std", derive(Clone, Debug, serde::Serialize, serde::Deserialize))]
 pub struct KeyGenSecondMsg {
     pub comm_witness: CommWitness,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[cfg_attr(feature = "std", derive(Clone, Debug, serde::Serialize, serde::Deserialize))]
 pub struct CommWitness {
     pub pk_commitment_blind_factor: BigInt,
     pub zk_pok_blind_factor: BigInt,
@@ -59,28 +59,28 @@ pub struct CommWitness {
     pub d_log_proof: DLogProof,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[cfg_attr(feature = "std", derive(Clone, Debug, serde::Serialize, serde::Deserialize))]
 pub struct CoinFlipFirstMsg {
     pub cf_msg1: coin_flip_optimal_rounds::Party1FirstMessage,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[cfg_attr(feature = "std", derive(Clone, Debug, serde::Serialize, serde::Deserialize))]
 pub struct CoinFlipSecondMsg {
     pub cf_msg2: coin_flip_optimal_rounds::Party1SecondMessage,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[cfg_attr(feature = "std", derive(Clone, Debug, serde::Serialize, serde::Deserialize))]
 pub struct EphKeyGenFirstMsg {
     pub pk_commitment: BigInt,
     pub zk_pok_commitment: BigInt,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[cfg_attr(feature = "std", derive(Clone, Debug, serde::Serialize, serde::Deserialize))]
 pub struct EphKeyGenSecondMsg {
     pub comm_witness: EphCommWitness,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[cfg_attr(feature = "std", derive(Clone, Debug, serde::Serialize, serde::Deserialize))]
 pub struct EphCommWitness {
     pub pk_commitment_blind_factor: BigInt,
     pub zk_pok_blind_factor: BigInt,
@@ -89,7 +89,7 @@ pub struct EphCommWitness {
     pub c: GE, //c = secret_share * base_point2
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[cfg_attr(feature = "std", derive(Clone, Debug, serde::Serialize, serde::Deserialize))]
 pub struct LocalSignatureMsg {
     pub s1: FE,
 }
